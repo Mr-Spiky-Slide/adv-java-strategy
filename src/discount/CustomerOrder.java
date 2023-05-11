@@ -11,21 +11,30 @@ public class CustomerOrder {
         this.billAmount = billAmount;
         this.discountType = discountType;
     }
+    public double smallTip(){
+        return billAmount - (billAmount * 0.1);
+    }
+    public double mediumTip(){
+        return billAmount - (billAmount * 0.5);
+    }
+    public double largeTip(){
+        return billAmount - (billAmount * 0.75);
+    }
 
     public double getBillAmount() {
         double tempBill;
         switch (discountType) {
             case 'S':
             case 's':
-                tempBill = billAmount - (billAmount * 0.1);
+                tempBill = smallTip();
                 break;
             case 'D':
             case 'd':
-                tempBill = billAmount - (billAmount * 0.5);
+                tempBill = mediumTip();
                 break;
             case 'L':
             case 'l':
-                tempBill = billAmount - (billAmount * 0.75);
+                tempBill = largeTip();
                 break;
             default:
                 tempBill = billAmount;
